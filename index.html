@@ -5,36 +5,28 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>食刻 TASTE — 好好吃饭，轻盈一点</title>
 <style>
-:root{
-  --bg:#f3efe8; --card:#fff; --ink:#1a1814; --muted:#8a8378;
-  --brown:#8b6f4e; --line:#e5dfd5; --black:#1a1814;
-}
+:root{--bg:#f3efe8;--card:#fff;--ink:#1a1814;--muted:#8a8378;--brown:#8b6f4e;--line:#e5dfd5;--black:#1a1814}
 *{margin:0;padding:0;box-sizing:border-box}
 body{font-family:-apple-system,BlinkMacSystemFont,"PingFang SC","Microsoft YaHei",sans-serif;background:var(--bg);color:var(--ink);line-height:1.6}
 .serif{font-family:Georgia,"Times New Roman","Songti SC",serif}
 .wrap{max-width:1280px;margin:0 auto;padding:0 32px}
-
-/* Nav */
 nav{display:flex;align-items:center;justify-content:space-between;padding:24px 0}
 .brand{font-size:22px;font-weight:700;letter-spacing:2px}
 .brand span{font-size:11px;color:var(--muted);font-weight:400;letter-spacing:3px;margin-left:6px}
-.nav-links{display:flex;gap:32px;font-size:14px;color:var(--muted)}
-.nav-links a{color:var(--muted);text-decoration:none;transition:color .2s}
+.nav-links{display:flex;gap:32px;font-size:14px}
+.nav-links a{color:var(--muted);text-decoration:none;cursor:pointer;transition:color .2s}
 .nav-links a:hover{color:var(--ink)}
 .nav-right{display:flex;align-items:center;gap:12px}
 .avatar{width:36px;height:36px;border-radius:50%;background:#ddd;display:flex;align-items:center;justify-content:center;font-size:14px;overflow:hidden}
-.pill{background:var(--black);color:#fff;border:none;padding:9px 18px;border-radius:50px;font-size:13px;cursor:pointer;display:flex;align-items:center;gap:6px;transition:opacity .2s}
-.pill:hover{opacity:.85}
+.pill{background:var(--black);color:#fff;border:none;padding:9px 18px;border-radius:50px;font-size:13px;cursor:pointer;display:flex;align-items:center;gap:6px}
 .pill .num{background:rgba(255,255,255,.2);border-radius:20px;padding:1px 8px;font-size:12px}
-
-/* Hero */
-.hero{display:grid;grid-template-columns:1.1fr 1fr;gap:24px;margin:16px 0 40px}
+.hero{display:grid;grid-template-columns:1.1fr 1fr;gap:24px;margin:16px 0 32px}
 .hero-left{background:var(--card);border-radius:24px;padding:48px;display:flex;flex-direction:column;justify-content:space-between;min-height:440px;position:relative}
 .hero-top{display:flex;justify-content:space-between;font-size:11px;letter-spacing:2px;color:var(--muted)}
 .hero-top .line::before{content:"";display:inline-block;width:30px;height:1px;background:var(--muted);vertical-align:middle;margin-right:10px}
-.hero-left h1{font-size:56px;line-height:1.15;font-weight:700;margin:24px 0;letter-spacing:-1px}
+.hero-left h1{font-size:52px;line-height:1.15;font-weight:700;margin:24px 0;letter-spacing:-1px}
 .hero-desc{color:var(--muted);font-size:14px;max-width:380px;line-height:1.8}
-.search-row{display:flex;gap:10px;margin-top:32px}
+.search-row{display:flex;gap:10px;margin-top:28px}
 .search-row input{flex:1;border:1px solid var(--line);border-radius:50px;padding:14px 22px;font-size:14px;outline:none;background:var(--bg)}
 .search-row input:focus{border-color:var(--brown)}
 .btn-brown{background:var(--brown);color:#fff;border:none;border-radius:50px;padding:14px 26px;font-size:14px;cursor:pointer;white-space:nowrap}
@@ -44,30 +36,35 @@ nav{display:flex;align-items:center;justify-content:space-between;padding:24px 0
 .hero-right{border-radius:24px;overflow:hidden;position:relative;min-height:440px}
 .hero-right img{width:100%;height:100%;object-fit:cover;position:absolute;inset:0}
 .hero-right .overlay{position:absolute;left:28px;bottom:24px;color:#fff}
-.hero-right .overlay .tag{font-size:11px;letter-spacing:2px;opacity:.8}
+.hero-right .overlay .tag{font-size:11px;letter-spacing:2px;opacity:.85}
 .hero-right .overlay .name{font-size:22px;font-weight:600;margin-top:4px}
-.hero-right .badge{position:absolute;right:24px;bottom:24px;background:rgba(255,255,255,.9);padding:6px 14px;border-radius:20px;font-size:12px;color:var(--ink)}
-
-/* Menu header */
+.hero-right .badge{position:absolute;right:24px;bottom:24px;background:rgba(255,255,255,.9);padding:6px 14px;border-radius:20px;font-size:12px}
+/* mood bar */
+.mood-bar{background:var(--card);border-radius:20px;padding:20px 24px;margin-bottom:28px;display:flex;align-items:center;gap:12px;flex-wrap:wrap}
+.mood-bar .lbl{font-size:13px;color:var(--muted);margin-right:4px;white-space:nowrap}
+.mood{border:1px solid var(--line);background:#fff;border-radius:50px;padding:8px 16px;font-size:13px;cursor:pointer;transition:all .2s;display:flex;align-items:center;gap:5px}
+.mood:hover{border-color:var(--ink)}
+.mood.active{background:var(--black);color:#fff;border-color:var(--black)}
+/* calendar */
+.cal-row{display:flex;align-items:center;gap:12px;margin-bottom:24px;flex-wrap:wrap}
+.cal-row label{font-size:13px;color:var(--muted)}
+.cal-row input[type=date]{border:1px solid var(--line);border-radius:12px;padding:10px 14px;font-size:14px;background:#fff;outline:none;color:var(--ink)}
+.cal-row .rec{background:var(--brown);color:#fff;border:none;border-radius:50px;padding:10px 20px;font-size:13px;cursor:pointer}
+.cal-row .rec-result{font-size:14px;color:var(--ink);font-weight:600}
 .menu-head{display:flex;justify-content:space-between;align-items:flex-end;margin-bottom:24px}
 .menu-head .eyebrow{font-size:11px;letter-spacing:3px;color:var(--muted);margin-bottom:8px}
 .menu-head h2{font-size:32px;font-weight:700}
 .menu-head .side{color:var(--muted);font-size:13px;max-width:320px;text-align:right}
-
-/* Categories */
 .cats{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:28px}
 .cat{padding:8px 18px;border-radius:50px;border:1px solid var(--line);background:transparent;font-size:13px;cursor:pointer;transition:all .2s;color:var(--muted)}
 .cat:hover{border-color:var(--ink)}
 .cat.active{background:var(--black);color:#fff;border-color:var(--black)}
-
-/* Grid */
 .grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;padding-bottom:60px}
 .dish{background:var(--card);border-radius:18px;overflow:hidden;transition:transform .2s,box-shadow .2s}
 .dish:hover{transform:translateY(-3px);box-shadow:0 12px 32px rgba(0,0,0,.08)}
 .dish-img{height:200px;position:relative;overflow:hidden;background:#eee}
 .dish-img img{width:100%;height:100%;object-fit:cover}
-.heart{position:absolute;top:14px;right:14px;width:34px;height:34px;border-radius:50%;background:rgba(255,255,255,.9);border:none;cursor:pointer;font-size:16px;display:flex;align-items:center;justify-content:center;transition:all .2s}
-.heart:hover{transform:scale(1.1)}
+.heart{position:absolute;top:14px;right:14px;width:34px;height:34px;border-radius:50%;background:rgba(255,255,255,.9);border:none;cursor:pointer;font-size:16px;display:flex;align-items:center;justify-content:center}
 .heart.liked{background:var(--black);color:#fff}
 .dish-body{padding:18px 20px 20px}
 .dish-meta{display:flex;justify-content:space-between;font-size:11px;color:var(--muted);margin-bottom:8px}
@@ -77,30 +74,18 @@ nav{display:flex;align-items:center;justify-content:space-between;padding:24px 0
 .price{font-size:15px;font-weight:700}
 .price small{font-size:11px;color:var(--muted);font-weight:400;margin-left:4px}
 .add-btn{border:1px solid var(--line);background:#fff;border-radius:50px;padding:7px 16px;font-size:13px;cursor:pointer;transition:all .2s}
-.add-btn:hover{border-color:var(--ink)}
 .add-btn.added{background:var(--black);color:#fff;border-color:var(--black)}
-
-/* Toast */
 #toast{position:fixed;bottom:30px;left:50%;transform:translateX(-50%) translateY(100px);background:var(--black);color:#fff;padding:12px 24px;border-radius:50px;font-size:14px;opacity:0;transition:all .3s;z-index:99}
 #toast.show{opacity:1;transform:translateX(-50%) translateY(0)}
-
-@media(max-width:900px){
-  .hero{grid-template-columns:1fr}
-  .grid{grid-template-columns:repeat(2,1fr)}
-  .hero-left h1{font-size:38px}
-  .nav-links{display:none}
-}
-@media(max-width:560px){
-  .grid{grid-template-columns:1fr}
-  .wrap{padding:0 16px}
-}
+@media(max-width:900px){.hero{grid-template-columns:1fr}.grid{grid-template-columns:repeat(2,1fr)}.hero-left h1{font-size:36px}.nav-links{display:none}}
+@media(max-width:560px){.grid{grid-template-columns:1fr}.wrap{padding:0 16px}}
 </style>
 </head>
 <body>
 <div class="wrap">
   <nav>
     <div class="brand">食刻<span>TASTE / 01</span></div>
-    <div class="nav-links"><a href="#menu">轻食菜单</a><a href="#">按心情</a><a href="#" onclick="randomPick();return false">随机一餐</a></div>
+    <div class="nav-links"><a href="#menu">轻食菜单</a><a onclick="document.getElementById('moodBar').scrollIntoView({behavior:'smooth'})">按心情</a><a onclick="randomPick()">随机一餐</a></div>
     <div class="nav-right">
       <div class="avatar">D</div>
       <button class="pill">我的收藏 <span class="num" id="favCount">0</span></button>
@@ -122,11 +107,28 @@ nav{display:flex;align-items:center;justify-content:space-between;padding:24px 0
       <div class="hero-stats"><div class="big" id="totalNum">24</div><div class="lbl">MENU IDEAS</div></div>
     </div>
     <div class="hero-right">
-      <img src="https://images.unsplash.com/photo-1546069901-ba9599a7e63c?w=800&q=80" alt="editor pick">
+      <img src="https://images.unsplash.com/photo-1546069901-ba9599a7e63c?w=800&q=80&auto=format&fit=crop" alt="editor pick">
       <div class="overlay"><div class="tag">EDITOR'S PICK · 01</div><div class="name">香草鸡胸谷物碗</div></div>
       <div class="badge">谷物 / 丰盛</div>
     </div>
   </section>
+
+  <div class="mood-bar" id="moodBar">
+    <span class="lbl">今天心情：</span>
+    <button class="mood" data-mood="happy">😋 开心</button>
+    <button class="mood" data-mood="tired">😴 疲惫</button>
+    <button class="mood" data-mood="treat">🥰 想犒劳自己</button>
+    <button class="mood" data-mood="light">🌿 清淡</button>
+    <button class="mood" data-mood="rich">🔥 重口</button>
+    <button class="mood" data-mood="sick">🤒 没胃口</button>
+  </div>
+
+  <div class="cal-row">
+    <label>📅 选餐日期：</label>
+    <input type="date" id="datePicker">
+    <button class="rec" onclick="dateRecommend()">根据今天推荐</button>
+    <span class="rec-result" id="dateRec"></span>
+  </div>
 
   <section id="menu">
     <div class="menu-head">
@@ -137,83 +139,67 @@ nav{display:flex;align-items:center;justify-content:space-between;padding:24px 0
     <div class="grid" id="grid"></div>
   </section>
 </div>
-
 <div id="toast"></div>
 
 <script>
 const dishes=[
-  {name:"香草鸡胸谷物碗",cat:"谷物能量碗",desc:"烤鸡胸配牛油果、藜麦与时蔬。",price:42,time:"15-20 min",img:"https://images.unsplash.com/photo-1546069901-ba9599a7e63c?w=600&q=80"},
-  {name:"烤南瓜藜麦沙拉",cat:"鲜蔬沙拉",desc:"烤南瓜与藜麦拌入嫩叶菜，点缀坚果碎。",price:36,time:"10-15 min",img:"https://images.unsplash.com/photo-1512621776951-a57141f2eefd?w=600&q=80"},
-  {name:"地中海鹰嘴豆沙拉",cat:"鲜蔬沙拉",desc:"鹰嘴豆、番茄与黄瓜，带一点橄榄香。",price:37,time:"10-15 min",img:"https://images.unsplash.com/photo-1505253758410-73172bafb0f8?w=600&q=80"},
-  {name:"香草烤薯角",cat:"小食饮品",desc:"香草和海盐提味，作为主餐旁边的小小满足。",price:18,time:"8-12 min",img:"https://images.unsplash.com/photo-1518977676601-b53f82aba655?w=600&q=80"},
-  {name:"酸奶莓果杯",cat:"小食饮品",desc:"原味酸奶搭配莓果与少量谷物脆。",price:22,time:"5-8 min",img:"https://images.unsplash.com/photo-1488477181946-6428a0291777?w=600&q=80"},
-  {name:"柠檬薄荷气泡饮",cat:"小食饮品",desc:"柠檬与薄荷带来清透的口感。",price:16,time:"3-5 min",img:"https://images.unsplash.com/photo-1621263764028-ec9c9f362a37?w=600&q=80"},
-  {name:"燕麦拿铁",cat:"小食饮品",desc:"柔和燕麦香与咖啡融合，热饮或冰饮都合适。",price:20,time:"3-5 min",img:"https://images.unsplash.com/photo-1509042239860-f550ce710b93?w=600&q=80"},
-  {name:"香烤鸡胸暖碗",cat:"暖食焖饭",desc:"温热谷物底配嫩烤鸡胸与时蔬。",price:39,time:"15 min",img:"https://images.unsplash.com/photo-1546833999-b9f581a1996d?w=600&q=80"},
-  {name:"牛油果多多卷",cat:"多多卷",desc:"牛油果、蔬菜与全麦卷饼，清爽管饱。",price:28,time:"5-10 min",img:"https://images.unsplash.com/photo-1521341050502-9bd9bac2af71?w=600&q=80"},
-  {name:"全麦帕尼尼",cat:"帕尼尼",desc:"热压全麦面包夹番茄马苏里拉。",price:26,time:"8 min",img:"https://images.unsplash.com/photo-1528735602780-2552fd46c7af?w=600&q=80"},
-  {name:"泰式牛肉沙拉",cat:"鲜蔬沙拉",desc:"轻辣牛肉配薄荷、生菜与青柠汁。",price:42,time:"12 min",img:"https://images.unsplash.com/photo-1552769569-c9f6b42e5e1e?w=600&q=80"},
-  {name:"时蔬糙米饭",cat:"暖食焖饭",desc:"糙米焖配当季蔬菜与菌菇。",price:32,time:"15 min",img:"https://images.unsplash.com/photo-1512058564366-18510be2db19?w=600&q=80"},
+  {name:"香草鸡胸谷物碗",cat:"谷物能量碗",moods:["treat","happy"],desc:"烤鸡胸配牛油果、藜麦与时蔬。",price:42,time:"15-20 min",img:"https://images.unsplash.com/photo-1546069901-ba9599a7e63c?w=600&q=80&auto=format&fit=crop"},
+  {name:"烤南瓜藜麦沙拉",cat:"鲜蔬沙拉",moods:["light","sick"],desc:"烤南瓜与藜麦拌入嫩叶菜，点缀坚果碎。",price:36,time:"10-15 min",img:"https://images.unsplash.com/photo-1512621776951-a57141f2eefd?w=600&q=80&auto=format&fit=crop"},
+  {name:"地中海鹰嘴豆沙拉",cat:"鲜蔬沙拉",moods:["light"],desc:"鹰嘴豆、番茄与黄瓜，带一点橄榄香。",price:37,time:"10-15 min",img:"https://images.unsplash.com/photo-1540189549336-e6e99c3679fe?w=600&q=80&auto=format&fit=crop"},
+  {name:"香草烤薯角",cat:"小食饮品",moods:["happy","treat"],desc:"香草和海盐提味，作为主餐旁边的小小满足。",price:18,time:"8-12 min",img:"https://images.unsplash.com/photo-1573080496219-bb080dd4f877?w=600&q=80&auto=format&fit=crop"},
+  {name:"酸奶莓果杯",cat:"小食饮品",moods:["happy","sick"],desc:"原味酸奶搭配莓果与少量谷物脆。",price:22,time:"5-8 min",img:"https://images.unsplash.com/photo-1488477181946-6428a0291777?w=600&q=80&auto=format&fit=crop"},
+  {name:"柠檬薄荷气泡饮",cat:"小食饮品",moods:["sick","light"],desc:"柠檬与薄荷带来清透的口感。",price:16,time:"3-5 min",img:"https://images.unsplash.com/photo-1556679343-c7306c1976bc?w=600&q=80&auto=format&fit=crop"},
+  {name:"燕麦拿铁",cat:"小食饮品",moods:["tired"],desc:"柔和燕麦香与咖啡融合，热饮或冰饮都合适。",price:20,time:"3-5 min",img:"https://images.unsplash.com/photo-1509042239860-f550ce710b93?w=600&q=80&auto=format&fit=crop"},
+  {name:"香烤鸡胸暖碗",cat:"暖食焖饭",moods:["tired","rich"],desc:"温热谷物底配嫩烤鸡胸与时蔬。",price:39,time:"15 min",img:"https://images.unsplash.com/photo-1546833999-b9f581a1996d?w=600&q=80&auto=format&fit=crop"},
+  {name:"牛油果多多卷",cat:"多多卷",moods:["happy"],desc:"牛油果、蔬菜与全麦卷饼，清爽管饱。",price:28,time:"5-10 min",img:"https://images.unsplash.com/photo-1521341050502-9bd9bac2af71?w=600&q=80&auto=format&fit=crop"},
+  {name:"全麦帕尼尼",cat:"帕尼尼",moods:["treat","tired"],desc:"热压全麦面包夹番茄马苏里拉。",price:26,time:"8 min",img:"https://images.unsplash.com/photo-1528735602780-2552fd46c7af?w=600&q=80&auto=format&fit=crop"},
+  {name:"泰式牛肉沙拉",cat:"鲜蔬沙拉",moods:["rich","happy"],desc:"轻辣牛肉配薄荷、生菜与青柠汁。",price:42,time:"12 min",img:"https://images.unsplash.com/photo-1559784812-c4501828dded?w=600&q=80&auto=format&fit=crop"},
+  {name:"时蔬糙米饭",cat:"暖食焖饭",moods:["tired","light"],desc:"糙米焖配当季蔬菜与菌菇。",price:32,time:"15 min",img:"https://images.unsplash.com/photo-1512058564366-18510be2db19?w=600&q=80&auto=format&fit=crop"},
+  {name:"牛油果吐司",cat:"帕尼尼",moods:["light","happy"],desc:"全麦吐司配牛油果泥与溏心蛋。",price:25,time:"5 min",img:"https://images.unsplash.com/photo-1588137377814-08d06e1fdbc5?w=600&q=80&auto=format&fit=crop"},
+  {name:"韩式拌饭",cat:"暖食焖饭",moods:["rich","treat"],desc:"热米饭配拌菜与煎蛋，拌开超满足。",price:38,time:"12 min",img:"https://images.unsplash.com/photo-1553163147-622ab57be1c7?w=600&q=80&auto=format&fit=crop"},
+  {name:"鲜榨果汁",cat:"小食饮品",moods:["sick","light"],desc:"当季水果鲜榨，无添加糖。",price:15,time:"3 min",img:"https://images.unsplash.com/photo-1600271886742-f049cd451bba?w=600&q=80&auto=format&fit=crop"},
+  {name:"日式牛肉饭",cat:"暖食焖饭",moods:["tired","treat"],desc:"清甜洋葱炖牛肉盖饭，暖心暖胃。",price:40,time:"15 min",img:"https://images.unsplash.com/photo-1552611052-33e04de081de?w=600&q=80&auto=format&fit=crop"},
 ];
 const cats=["全部","谷物能量碗","暖食焖饭","多多卷","帕尼尼","鲜蔬沙拉","小食饮品"];
-let activeCat="全部",cart=0,favs=0;
-
+let activeCat="全部",activeMood=null,cart=0,favs=0;
 const catsEl=document.getElementById("cats"),gridEl=document.getElementById("grid");
-cats.forEach(c=>{
-  const b=document.createElement("button");
-  b.className="cat"+(c===activeCat?" active":"");b.textContent=c;
-  b.onclick=()=>{activeCat=c;render();};
-  catsEl.appendChild(b);
-});
-
+cats.forEach(c=>{const b=document.createElement("button");b.className="cat"+(c===activeCat?" active":"");b.textContent=c;b.onclick=()=>{activeCat=c;render();};catsEl.appendChild(b);});
+document.querySelectorAll(".mood").forEach(m=>{m.onclick=()=>{
+  if(activeMood===m.dataset.mood){activeMood=null;m.classList.remove("active");}
+  else{document.querySelectorAll(".mood").forEach(x=>x.classList.remove("active"));activeMood=m.dataset.mood;m.classList.add("active");}
+  render();
+};});
 function render(filter=""){
   gridEl.innerHTML="";
-  let list=dishes.filter(d=>activeCat==="全部"||d.cat===activeCat);
-  if(filter) list=list.filter(d=>d.name.includes(filter)||d.desc.includes(filter));
-  list.forEach((d,i)=>{
+  let list=dishes.filter(d=>(activeCat==="全部"||d.cat===activeCat)&&(!activeMood||d.moods.includes(activeMood)));
+  if(filter)list=list.filter(d=>d.name.includes(filter)||d.desc.includes(filter));
+  list.forEach(d=>{
     const card=document.createElement("div");card.className="dish";
-    card.innerHTML=`
-      <div class="dish-img"><img src="${d.img}" loading="lazy" alt="${d.name}">
-        <button class="heart" onclick="event.stopPropagation();toggleFav(this)">♡</button></div>
-      <div class="dish-body">
-        <div class="dish-meta"><span>${d.cat}</span><span>${d.time}</span></div>
-        <div class="dish-name">${d.name}</div>
-        <div class="dish-desc">${d.desc}</div>
-        <div class="dish-foot">
-          <div class="price">¥${d.price}<small>示意价</small></div>
-          <button class="add-btn" onclick="addToCart(this,'${d.name}')">+ 加入清单</button>
-        </div>
-      </div>`;
+    card.innerHTML=`<div class="dish-img"><img src="${d.img}" loading="lazy" alt="${d.name}" onerror="this.src='https://images.unsplash.com/photo-1546069901-ba9599a7e63c?w=600&q=80'"><button class="heart" onclick="event.stopPropagation();toggleFav(this)">♡</button></div>
+    <div class="dish-body"><div class="dish-meta"><span>${d.cat}</span><span>${d.time}</span></div>
+    <div class="dish-name">${d.name}</div><div class="dish-desc">${d.desc}</div>
+    <div class="dish-foot"><div class="price">¥${d.price}<small>示意价</small></div>
+    <button class="add-btn" onclick="addToCart(this,'${d.name}')">+ 加入清单</button></div></div>`;
     gridEl.appendChild(card);
   });
   document.querySelectorAll(".cat").forEach(b=>b.classList.toggle("active",b.textContent===activeCat));
+  document.getElementById("totalNum").textContent=list.length;
 }
-function toggleFav(el){
-  el.classList.toggle("liked");
-  const liked=el.classList.contains("liked");
-  el.textContent=liked?"♥":"♡";
-  favs+=liked?1:-1;
-  document.getElementById("favCount").textContent=favs;
-}
-function addToCart(btn,name){
-  if(btn.classList.contains("added")){
-    btn.classList.remove("added");btn.textContent="+ 加入清单";cart--;
-  }else{
-    btn.classList.add("added");btn.textContent="✓ 已加入";cart++;
-    showToast("已加入："+name);
-  }
-  document.getElementById("cartCount").textContent=cart;
-}
-function showToast(msg){
-  const t=document.getElementById("toast");t.textContent=msg;t.classList.add("show");
-  clearTimeout(t._t);t._t=setTimeout(()=>t.classList.remove("show"),2000);
-}
+function toggleFav(el){el.classList.toggle("liked");const l=el.classList.contains("liked");el.textContent=l?"♥":"♡";favs+=l?1:-1;document.getElementById("favCount").textContent=favs;}
+function addToCart(btn,name){if(btn.classList.contains("added")){btn.classList.remove("added");btn.textContent="+ 加入清单";cart--;}else{btn.classList.add("added");btn.textContent="✓ 已加入";cart++;showToast("已加入："+name);}document.getElementById("cartCount").textContent=cart;}
+function showToast(msg){const t=document.getElementById("toast");t.textContent=msg;t.classList.add("show");clearTimeout(t._t);t._t=setTimeout(()=>t.classList.remove("show"),2200);}
 function doSearch(){render(document.getElementById("searchInput").value.trim());}
 document.getElementById("searchInput").addEventListener("keydown",e=>{if(e.key==="Enter")doSearch();});
-function randomPick(){
-  const d=dishes[Math.floor(Math.random()*dishes.length)];
-  showToast("今日推荐："+d.name+" ¥"+d.price);
-  document.getElementById("menu").scrollIntoView({behavior:"smooth"});
+function randomPick(){const d=dishes[Math.floor(Math.random()*dishes.length)];showToast("今日推荐："+d.name+" ¥"+d.price);document.getElementById("menu").scrollIntoView({behavior:"smooth"});}
+// Calendar
+const dp=document.getElementById("datePicker");
+dp.value=new Date().toISOString().split("T")[0];
+function dateRecommend(){
+  const d=dp.value;if(!d)return;
+  const seed=parseInt(d.replace(/-/g,""));
+  const pick=dishes[seed%dishes.length];
+  document.getElementById("dateRec").textContent="→ "+d+" 推荐："+pick.name;
+  showToast(d+" 就吃「"+pick.name+"」吧！");
 }
 render();
 </script>
